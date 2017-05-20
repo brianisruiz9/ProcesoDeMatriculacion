@@ -6,6 +6,7 @@
 package interfaz;
 
 import clases.AccesoAleatorio;
+import clases.Conexion;
 import clases.Idioma;
 import clases.Persona;
 import java.awt.Color;
@@ -15,6 +16,11 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -34,6 +40,9 @@ public class Principal extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
+    Connection cn = null;
+    Statement stmt = null;
+
     public Principal() {
         initComponents();
 
@@ -686,22 +695,51 @@ public class Principal extends javax.swing.JFrame {
                         } catch (IOException ex) {
                             ex.printStackTrace();
                         }
-                        JOptionPane.showMessageDialog(this, "Registo Completado Exitosamente!");
+                        JOptionPane.showMessageDialog(this, "El registro se realizó correctamente!", "Notificación", JOptionPane.INFORMATION_MESSAGE);
                         resetear();
                         break;
                     case 1:
                         try {
-                            AccesoAleatorio.crearFileAlumno(new File("personas.dat"));
+                            AccesoAleatorio.crearFileAlumno(new File("src/datos/" + archivo + ".bin"));
                             AccesoAleatorio.añadirPersona(new Persona(codigo, primernomb, segundonomb, primerape, segundoape, direccion, email, fechanac, sexo, carrera, semestre, ingles, horario, true));
                             AccesoAleatorio.cerrar();
-                            JOptionPane.showMessageDialog(this, "El registro se realizó correctamente.", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(this, "El registro se realizó correctamente!", "Notificación", JOptionPane.INFORMATION_MESSAGE);
                             resetear();
                         } catch (IOException ex) {
-                            JOptionPane.showMessageDialog(this, "Error en la escritura de datos.", "Error", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(this, "Error en la escritura de datos.", "ERROR", JOptionPane.ERROR_MESSAGE);
                         }
                         break;
                     case 2:
-                        JOptionPane.showMessageDialog(this, "Tipo de Almacenamiento no disponible!", "Error", JOptionPane.ERROR_MESSAGE);
+
+                        Connection cn = null;
+                        PreparedStatement preparedStmt = null;
+                        try {
+                            cn = new Conexion().obtenerConexion();
+                            String sql;
+                            sql = "insert into person(codigo,primernomb,segundonomb,primerape,segundoape,direccion,email,fechanac,sexo,carrera,semestre,ingles,horario) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                            preparedStmt = cn.prepareStatement(sql);
+                            preparedStmt.setInt(1, codigo);
+                            preparedStmt.setString(2, primernomb);
+                            preparedStmt.setString(3, segundonomb);
+                            preparedStmt.setString(4, primerape);
+                            preparedStmt.setString(5, segundoape);
+                            preparedStmt.setString(6, direccion);
+                            preparedStmt.setString(7, email);
+                            preparedStmt.setString(8, fechanac);
+                            preparedStmt.setString(9, sexo);
+                            preparedStmt.setString(10, carrera);
+                            preparedStmt.setString(11, semestre);
+                            preparedStmt.setInt(12, ingles);
+                            preparedStmt.setString(13, horario);
+                            preparedStmt.execute();
+                            cn.close();
+                        } catch (SQLException ex) {
+                            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (ClassNotFoundException ex) {
+                            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        JOptionPane.showMessageDialog(this, "El registro se realizó correctamente!", "Notificación", JOptionPane.INFORMATION_MESSAGE);
+                        resetear();
                         break;
                 }
 
@@ -1188,7 +1226,7 @@ public class Principal extends javax.swing.JFrame {
                         }
                         JOptionPane.showMessageDialog(this, e);
                     } catch (FileNotFoundException ex) {
-                        JOptionPane.showMessageDialog(this, "Error en la búsqueda de registros!", "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(this, "Error en la búsqueda de registros!", "ERROR", JOptionPane.ERROR_MESSAGE);
                     } catch (IOException ex) {
                         Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -1196,12 +1234,12 @@ public class Principal extends javax.swing.JFrame {
                 break;
             case 1:
                 if (txtArchivo.getText().trim().isEmpty()) {
-                    JOptionPane.showMessageDialog(this, "Digite el primer nombre de la persona a ver!", "ERROR", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Digite el primer nombre de la persona a ver!", "ERROR", JOptionPane.WARNING_MESSAGE);
                     txtArchivo.requestFocusInWindow();
                 } else {
                     String archivo = txtArchivo.getText();
                     try {
-                        AccesoAleatorio.crearFileAlumno(new File("personas.dat"));
+                        AccesoAleatorio.crearFileAlumno(new File("src/datos/" + archivo + ".bin"));
                         int i = AccesoAleatorio.buscarRegistro(archivo);
                         if (i == -1) {
                             JOptionPane.showMessageDialog(this, "Ningún registro coincide con los datos de búsqueda.", "Advertencia", JOptionPane.WARNING_MESSAGE);
@@ -1210,16 +1248,16 @@ public class Principal extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(this, AccesoAleatorio.getPersona(i));
                         AccesoAleatorio.cerrar();
                     } catch (IOException e) {
-                        JOptionPane.showMessageDialog(this, "Error en la búsqueda de registros!", "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(this, "Error en la búsqueda de registros!", "ERROR", JOptionPane.ERROR_MESSAGE);
                     }
                 }
                 break;
 
             case 2:
-                JOptionPane.showMessageDialog(this, "Busqueda No disponible", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Busqueda No disponible", "ERROR", JOptionPane.ERROR_MESSAGE);
                 break;
-
         }
+
 
     }//GEN-LAST:event_cmdVerPersonasActionPerformed
 
