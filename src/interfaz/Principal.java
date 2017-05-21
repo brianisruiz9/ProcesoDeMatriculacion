@@ -75,9 +75,9 @@ public class Principal extends javax.swing.JFrame {
         txtSegundoNombre = new javax.swing.JTextField();
         txtPrimerApellido = new javax.swing.JTextField();
         txtSegundoApellido = new javax.swing.JTextField();
-        cmbCalle = new javax.swing.JComboBox<>();
+        cmbCalle = new javax.swing.JComboBox<String>();
         txtDirC = new javax.swing.JTextField();
-        cmbDirLetra = new javax.swing.JComboBox<>();
+        cmbDirLetra = new javax.swing.JComboBox<String>();
         jLabel11 = new javax.swing.JLabel();
         txtDirNo1 = new javax.swing.JTextField();
         txtDirNo2 = new javax.swing.JTextField();
@@ -97,7 +97,7 @@ public class Principal extends javax.swing.JFrame {
         lbSemestre = new javax.swing.JLabel();
         lbIngles = new javax.swing.JLabel();
         lbHorario = new javax.swing.JLabel();
-        cmbCarrera = new javax.swing.JComboBox<>();
+        cmbCarrera = new javax.swing.JComboBox<String>();
         jSpinner1 = new javax.swing.JSpinner();
         slNivelIng = new javax.swing.JSlider();
         jCheckBox1 = new javax.swing.JCheckBox();
@@ -111,7 +111,7 @@ public class Principal extends javax.swing.JFrame {
         lbArchivo = new javax.swing.JLabel();
         lbAcceso = new javax.swing.JLabel();
         txtArchivo = new javax.swing.JTextField();
-        cmbAcceso = new javax.swing.JComboBox<>();
+        cmbAcceso = new javax.swing.JComboBox<String>();
         lbParametros = new javax.swing.JLabel();
         cmdAlmacenar = new javax.swing.JButton();
         cmdCancelar = new javax.swing.JButton();
@@ -122,9 +122,9 @@ public class Principal extends javax.swing.JFrame {
         lbCletra = new javax.swing.JLabel();
         lbCtextfield = new javax.swing.JLabel();
         lbIdioma = new javax.swing.JLabel();
-        cmbIdioma = new javax.swing.JComboBox<>();
-        cmbColorTextField = new javax.swing.JComboBox<>();
-        cmbColorLetra = new javax.swing.JComboBox<>();
+        cmbIdioma = new javax.swing.JComboBox<String>();
+        cmbColorTextField = new javax.swing.JComboBox<String>();
+        cmbColorLetra = new javax.swing.JComboBox<String>();
         cmdEstablecer = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -214,7 +214,7 @@ public class Principal extends javax.swing.JFrame {
         jPanel2.add(txtSegundoApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 150, -1));
 
         cmbCalle.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 14)); // NOI18N
-        cmbCalle.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "kr", "Cl", "Tv" }));
+        cmbCalle.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "kr", "Cl", "Tv" }));
         jPanel2.add(cmbCalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, -1, -1));
 
         txtDirC.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -225,7 +225,7 @@ public class Principal extends javax.swing.JFrame {
         jPanel2.add(txtDirC, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 30, -1));
 
         cmbDirLetra.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 14)); // NOI18N
-        cmbDirLetra.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L" }));
+        cmbDirLetra.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L" }));
         jPanel2.add(cmbDirLetra, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 14)); // NOI18N
@@ -347,7 +347,7 @@ public class Principal extends javax.swing.JFrame {
         jPanel3.add(lbHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
 
         cmbCarrera.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 14)); // NOI18N
-        cmbCarrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administración Ambiental", "Administración de Empresas", "Administración de Servicios de Salud", "Arquitectura", "Banca y Finanzas", "Comunicación Social", "Contaduría Pública", "Derecho", "Ingeniería Ambiental", "Ingeniería Agroindrustrial", "Ingeniería Civil", "Ingeniería de Sistemas", "Ingeniería Eléctrica", "Ingeniería Electrónica", "Ingeniería Industrial", "Licenciatura en Educación Básica Primaria", "Mercadeo y Publicidad", "Negocios Internacionales", "Psicología" }));
+        cmbCarrera.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Administración Ambiental", "Administración de Empresas", "Administración de Servicios de Salud", "Arquitectura", "Banca y Finanzas", "Comunicación Social", "Contaduría Pública", "Derecho", "Ingeniería Ambiental", "Ingeniería Agroindrustrial", "Ingeniería Civil", "Ingeniería de Sistemas", "Ingeniería Eléctrica", "Ingeniería Electrónica", "Ingeniería Industrial", "Licenciatura en Educación Básica Primaria", "Mercadeo y Publicidad", "Negocios Internacionales", "Psicología" }));
         jPanel3.add(cmbCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 310, -1));
 
         jSpinner1.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 14)); // NOI18N
@@ -407,7 +407,7 @@ public class Principal extends javax.swing.JFrame {
         jPanel5.add(txtArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 150, -1));
 
         cmbAcceso.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 14)); // NOI18N
-        cmbAcceso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Secuencial", "Aleatorio", "Relacional" }));
+        cmbAcceso.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Secuencial", "Aleatorio", "Relacional" }));
         cmbAcceso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel5.add(cmbAcceso, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 150, -1));
 
@@ -486,17 +486,17 @@ public class Principal extends javax.swing.JFrame {
         jPanel6.add(lbIdioma, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 70, -1));
 
         cmbIdioma.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 14)); // NOI18N
-        cmbIdioma.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Español", "Ingles" }));
+        cmbIdioma.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Español", "Ingles" }));
         cmbIdioma.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel6.add(cmbIdioma, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 130, -1));
 
         cmbColorTextField.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 14)); // NOI18N
-        cmbColorTextField.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Negro", "Amarillo", "Azul", "Rojo", "Rosa", "Verde", "Naranja", "Blanco" }));
+        cmbColorTextField.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Negro", "Amarillo", "Azul", "Rojo", "Rosa", "Verde", "Naranja", "Blanco" }));
         cmbColorTextField.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel6.add(cmbColorTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 130, -1));
 
         cmbColorLetra.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 14)); // NOI18N
-        cmbColorLetra.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Negro", "Amarillo", "Azul", "Rojo", "Rosa", "Verde", "Naranja", "Blanco" }));
+        cmbColorLetra.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Negro", "Amarillo", "Azul", "Rojo", "Rosa", "Verde", "Naranja", "Blanco" }));
         cmbColorLetra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel6.add(cmbColorLetra, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 130, -1));
 
@@ -711,12 +711,12 @@ public class Principal extends javax.swing.JFrame {
                         break;
                     case 2:
 
-                        Connection cn = null;
+                        cn = null;
                         PreparedStatement preparedStmt = null;
                         try {
                             cn = new Conexion().obtenerConexion();
                             String sql;
-                            sql = "insert into person(codigo,primernomb,segundonomb,primerape,segundoape,direccion,email,fechanac,sexo,carrera,semestre,ingles,horario) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                            sql = "insert into person(codigo,primernomb,segundonomb,primerape,segundoape,direccion,email,fechanac,sexo,carrera,senestre,ingles,horario) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                             preparedStmt = cn.prepareStatement(sql);
                             preparedStmt.setInt(1, codigo);
                             preparedStmt.setString(2, primernomb);
@@ -1254,7 +1254,39 @@ public class Principal extends javax.swing.JFrame {
                 break;
 
             case 2:
-                JOptionPane.showMessageDialog(this, "Busqueda No disponible", "ERROR", JOptionPane.ERROR_MESSAGE);
+                cn = null;
+                stmt = null;
+                try {
+                    cn = new Conexion().obtenerConexion();
+                    String sql;
+                    stmt = cn.createStatement();
+                    sql = "SELECT codigo, primernomb, segundonomb, primerape, segundoape, direccion, email, fechanac, sexo, carrera, senestre, ingles,horario FROM person";
+                    ResultSet rs = stmt.executeQuery(sql);
+
+                    while (rs.next()) {
+                        int codigo = rs.getInt("codigo");
+                        String primernomb = rs.getString("primernomb");
+                        String segundonomb = rs.getString("segundonomb");
+                        String primerape = rs.getString("primerape");
+                        String segundoape = rs.getString("segundoape");
+                        String direccion = rs.getString("direccion");
+                        String email = rs.getString("email");
+                        String fechanac = rs.getString("fechanac");
+                        String sexo = rs.getString("sexo");
+                        String carrera= rs.getString("carrera");
+                        String semestre = rs.getString("senestre");
+                        int ingles = rs.getInt("ingles");
+                        String horario = rs.getString("horario");
+
+                        JOptionPane.showMessageDialog(this,codigo+", "+primernomb+", "+segundonomb+", "+primerape+", "+segundoape+", "+direccion+", "+email+", "+fechanac+", "+sexo+", "+carrera+", "+semestre+", "+ingles+", "+horario);
+                    }
+                    cn.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                //  JOptionPane.showMessageDialog(this, "Busqueda No disponible", "ERROR", JOptionPane.ERROR_MESSAGE);
                 break;
         }
 
